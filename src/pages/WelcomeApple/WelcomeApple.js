@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AuthPage() {
+export default function WelcomeApple() {
 	return (
 		<div>
 			
