@@ -3,19 +3,40 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import { HomeRoutes } from '../routes';
-import logo from '../../assets/images/logo.svg';
+import NavHeader from '../../components/NavHeader';
 import '../../assets/fonts';
 import './App.css';
 
 export default class App extends Component {
+  // I am making this my global state just because redux is to
+  // much bolierplate to implemnet in such a small app
   state = {
-    // user
+    // i save the session in cookies and in redux to keep track
+    userLoggedIn: false,
   };
 
+  //  this mehtod i always put them as action and form there update my store
+  setUserLoggedIn = () => {
+    this.setState({ userLoggedIn: true });
+  }
+
+  setUserLoggedOut = () => {
+    this.setState({ userLoggedIn: false });
+  }
+
   render() {
+    const session = {
+      setUserLoggedIn: this.setUserLoggedIn,
+      setUserLoggedOut: this.setUserLoggedOut,
+      userLoggedIn: this.state.userLoggedIn,
+    };
+
     return (
       <Router>
-        <HomeRoutes/>
+        <NavHeader animate={this.state.userLoggedIn} location={this.props.location}/>
+        <div className='app_container'>
+          <HomeRoutes session={session} />
+        </div>
       </Router>
     )
   }

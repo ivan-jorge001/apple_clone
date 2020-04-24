@@ -7,24 +7,44 @@ import BaseService from './BaseService';
  * or employee
  */
 
-export default class AuthService extends BaseService {
-	static get url() {
+class AuthService extends BaseService {
+	get url() {
 		return process.env.API_URL || '';
 	}
 
-	static login(username, password) {
+	login(username, password) {
 		let url =`${this.url}/login`
+		console.log(username, password)
 		return this.request(url, {
+			mocked: true,
 			method: 'POST',
 			body: JSON.stringify({ username, password}),
 			headers: {
 				'Content-Type': 'application/json'
-				// 'Content-Type': 'application/x-www-form-urlencoded',
 			},
 		})
 	}
 
-	static logout() {
-		return this.request(`${this.url}/logout`)
+	signup(data) {
+		let url =`${this.url}/signup`
+		console.log(data)
+		return this.request(url, {
+			mocked: true,
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			},
+		})
+	}
+
+
+	logout() {
+		return this.request(`${this.url}/logout`, {
+			mocked: true,
+		})
 	}
 }
+
+const authService = new AuthService();
+export default authService;
