@@ -1,38 +1,71 @@
-import React from 'react'
-import NavHeaderLinks from '../../components/NavHeaderLinks/NavHeaderLinks';
+import React, { useState } from 'react';
+import { AnimatedRoute } from 'react-router-transition';
 import Iphone from '../Iphone';
+import NavHeaderLinks from '../../components/NavHeaderLinks/NavHeaderLinks';
 import appleGrey from '../../assets/images/apple_grey.svg'
 import computerFrame from '../../assets/images/computer_frame.svg'
 import iphoneFrame from '../../assets/images/iphone_frame.svg'
 import iWatchFrame from '../../assets/images/iwatch_frame.svg'
 import './WelcomeApple.css'
-import { AnimatedRoute } from 'react-router-transition';
+import authService from '../../services/AuthService';
 
 export default function WelcomeApple(props) {
+	const [selectedTab, setSelectedTab] = useState(0);
+
+	const onLinkClicked = (id, path) => {
+		setSelectedTab(id);
+		props.history.push(path)
+	}
+
+	const logout = () => {
+		authService.logout()
+		.then(() => {
+			// this should be an action updating redux store
+			props.session.setUserLoggedOut();
+		})
+		.catch((e) => {
+			// should be a custom logger
+			console.log(e)
+		});
+
+	}
+
 	console.log(props);
 	const linksData = [
 		{
 			id: 0,
 			title: 'iPhone',
 			// put in a constant
-			onClick: () => props.history.push('/welcome/iphone'),
+			onClick: (id) => onLinkClicked(id, '/welcome/iphone'),
 		},
 		{
 			id: 1,
 			title: 'MacBook Pro',
-			onClick: () => props.history.push('/welcome/iphone1'),
+			onClick: (id) => onLinkClicked(id, '/welcome/iphone1'),
 		},
 		{
 			id: 2,
 			title: 'Watch',
-			onClick: () => props.history.push('/welcome/iphone2'),
+			onClick: (id) => onLinkClicked(id, '/welcome/iphone2'),
 		},
 		{
 			id: 3,
 			title: 'Notify me',
-			onClick: () => props.history.push('/notifyme'),
+			onClick: (id) => onLinkClicked(id, '/notifyme'),
 			style: {
 				background: '#5AC8FA 0% 0% no-repeat padding-box',
+				borderRadius: 23,
+				opacity: 1,
+				padding: '3px 25px',
+				color: 'white',
+			}
+		},
+		{
+			id: 4,
+			title: 'logout',
+			onClick: logout,
+			style: {
+				background: '#707070 0% 0% no-repeat padding-box',
 				borderRadius: 23,
 				opacity: 1,
 				padding: '3px 25px',
@@ -59,7 +92,7 @@ export default function WelcomeApple(props) {
 	const renderHeader = (body) => {
 		return () => (
 			<div className="welcome_container">
-				<NavHeaderLinks links={linksData}/>
+				<NavHeaderLinks links={linksData} selectedTab={selectedTab}/>
 				{body}
 			</div>
 		)

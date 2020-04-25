@@ -1,10 +1,9 @@
 import React from 'react';
 import {
-  Switch,
   Route,
 	Redirect,
 } from 'react-router-dom';
-import { AnimatedSwitch, AnimatedRoute } from 'react-router-transition';
+import { AnimatedSwitch } from 'react-router-transition';
 
 import AuthPage from './AuthPage';
 import WelcomeApple from './WelcomeApple';
@@ -20,7 +19,7 @@ const ProtectedRoute = ({ component: Component, session, ...rest }) => (
 	{...rest}
 	render={
 		(props) => (
-			session.userLoggedIn ? <Component {...props}/> : <Redirect to={ROUTES.AUTH}/>
+			session.userLoggedIn ? <Component {...props} session={session}/> : <Redirect to={ROUTES.AUTH}/>
 		)}
 	>
 
@@ -35,7 +34,7 @@ export function HomeRoutes(props) {
 			atLeave={{ opacity: 0 }}
 			atActive={{ opacity: 1 }}
 		>
-			<Route
+			<ProtectedRoute
 				path={ROUTES.WELCOME}
 				component={WelcomeApple}
 				{...props}
