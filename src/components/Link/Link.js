@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './Link.css';
 
-export default function Link(props) {
+function Link(props) {
 	const {
 		title,
 		style,
@@ -16,3 +17,12 @@ export default function Link(props) {
 		</div>
 	)
 }
+
+Link.propTypes = {
+	title: PropTypes.string,
+	style: PropTypes.string,
+	onClick: PropTypes.func,
+}
+
+export default Link;
+

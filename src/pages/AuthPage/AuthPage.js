@@ -30,7 +30,7 @@ class AuthPage extends Component {
     }
 
     // Normally here is where i would call my action
-    //  and my action would have the call to my service
+    // and my action would have the call to my service
     const { username, password } = this.state.fields;
 
     AuthService.login(username, password)
@@ -62,7 +62,6 @@ class AuthPage extends Component {
 
     // Normally here is where i would call my action
     //  and my action would have the call to my service
-
     AuthService.signup(this.state.fields)
     .then(() => {
       this.props.session.setUserLoggedIn();

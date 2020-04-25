@@ -9,7 +9,6 @@ export default function IWatch() {
 			subtitle="Apple Watch Series 4. Fundamentally redesigned and re‑engineered to help you be even more active, healthy, and connected."
 			priceText="From $699"
 		>
-
 		</DeviceInfoTile>
 	)
 }

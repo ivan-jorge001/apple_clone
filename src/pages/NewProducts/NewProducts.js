@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 import { useCountUp } from 'react-countup';
-import whiteAppleLogo from '../../assets/images/apple_white.svg'
+import whiteAppleLogo from '../../assets/images/apple_white.svg';
 import './NewProducts.css';
 
 export default function NewProducts({ onClick }) {

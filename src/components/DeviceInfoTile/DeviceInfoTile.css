@@ -1,0 +1,96 @@
+.deviceinfo_container {
+	z-index: 0;
+	margin-left: 100px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.deviceinfo_info_with_gallery {
+	display: flex;
+	flex-direction: column;
+}
+
+.deviceinfo_info_apple_logo {
+	right: 0;
+	top: 0;
+	z-index: 0;
+	position: absolute;
+	width: 400px;
+	height: 400px;
+}
+
+.deviceinfo_info_price_gallery {
+	min-height: 200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.deviceinfo_info_price {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 50px;
+}
+
+.deviceinfo_info_price_text {
+	font-family: 'Poppins-Bold';
+	font-size:  50px;
+	letter-spacing: 0px;
+	color: rgba(204, 204, 204, 1);
+	opacity: 1;
+}
+
+.deviceinfo_info_price_subtext {
+	font-family: 'Poppins-SemiBold';
+	font-size: 20px;
+	letter-spacing: 0px;
+	color: rgba(255, 59, 48, 1);
+	opacity: 1;
+}
+
+.deviceinfo_info {
+	position: relative;
+	padding: 90px;
+	height: 100%;
+	width: 100%;
+	max-width: 600px;
+	background: transparent linear-gradient(90deg, #F2F2F2 0%, #FFFFFF00 100%) 0% 0% no-repeat padding-box;
+	opacity: 1;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.deviceinfo_info_header_text {
+	text-align: left;
+	font-family: 'Poppins-Bold';
+	font-size: 26px;
+	letter-spacing: 0px;
+	color: rgba(255, 59, 48, 1);
+	opacity: 1;
+}
+
+.deviceinfo_info_header_title {
+	z-index: 1;
+	text-align: left;
+	font-family: 'Poppins-Bold';
+	font-size: 80px;
+	letter-spacing: 0px;
+	color: rgba(0, 0, 0, 1);
+	opacity: 1;
+}
+
+.deviceinfo_info_header_subtitle {
+	font: 20px;
+	letter-spacing: 0px;
+	color: rgba(153, 153, 153, 1);
+	opacity: 1;
+}
+
+.deviceinfo_small_gallery_animation {
+	display: flex;
+	flex-direction: row;
+}
