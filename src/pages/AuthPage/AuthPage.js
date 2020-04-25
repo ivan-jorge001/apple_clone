@@ -30,7 +30,7 @@ class AuthPage extends Component {
     }
 
     // Normally here is where i would call my action
-    //  and my action would have the call to my service
+    // and my action would have the call to my service
     const { username, password } = this.state.fields;
 
     AuthService.login(username, password)
@@ -38,8 +38,6 @@ class AuthPage extends Component {
       // usually all this is done in the action so the
       // react component are clean from any logic
       this.props.session.setUserLoggedIn();
-      console.log(this.props);
-      localStorage.setItem('userLoggedIn', true);
     }).catch((err) => {
       // I hate using conosle logs in production apps
       // i like more using custom loggers to be able to track errors
@@ -62,7 +60,6 @@ class AuthPage extends Component {
 
     // Normally here is where i would call my action
     //  and my action would have the call to my service
-
     AuthService.signup(this.state.fields)
     .then(() => {
       this.props.session.setUserLoggedIn();

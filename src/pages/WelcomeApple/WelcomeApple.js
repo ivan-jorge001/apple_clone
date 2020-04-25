@@ -2,21 +2,15 @@ import React, { useState } from 'react';
 import { AnimatedRoute } from 'react-router-transition';
 import Iphone from '../Iphone';
 import NavHeaderLinks from '../../components/NavHeaderLinks/NavHeaderLinks';
+import authService from '../../services/AuthService';
+import IWatch from '../IWatch';
 import appleGrey from '../../assets/images/apple_grey.svg'
 import computerFrame from '../../assets/images/computer_frame.svg'
 import iphoneFrame from '../../assets/images/iphone_frame.svg'
 import iWatchFrame from '../../assets/images/iwatch_frame.svg'
 import './WelcomeApple.css'
-import authService from '../../services/AuthService';
 
 export default function WelcomeApple(props) {
-	const [selectedTab, setSelectedTab] = useState(0);
-
-	const onLinkClicked = (id, path) => {
-		setSelectedTab(id);
-		props.history.push(path)
-	}
-
 	const logout = () => {
 		authService.logout()
 		.then(() => {
@@ -30,23 +24,24 @@ export default function WelcomeApple(props) {
 
 	}
 
-	console.log(props);
 	const linksData = [
 		{
 			id: 0,
 			title: 'iPhone',
-			// put in a constant
+			path: '/welcome/iphone',
 			onClick: (id) => onLinkClicked(id, '/welcome/iphone'),
 		},
 		{
 			id: 1,
 			title: 'MacBook Pro',
+			path: '/welcome/iphone1',
 			onClick: (id) => onLinkClicked(id, '/welcome/iphone1'),
 		},
 		{
 			id: 2,
 			title: 'Watch',
-			onClick: (id) => onLinkClicked(id, '/welcome/iphone2'),
+			path: '/welcome/watch',
+			onClick: (id) => onLinkClicked(id, '/welcome/watch'),
 		},
 		{
 			id: 3,
@@ -73,6 +68,14 @@ export default function WelcomeApple(props) {
 			}
 		},
 	];
+
+	const tab = linksData.find((link) => props.location.pathname === link.path) || {}
+	const [selectedTab, setSelectedTab] = useState(tab.id || 0);
+
+	const onLinkClicked = (id, path) => {
+		setSelectedTab(id);
+		props.history.push(path)
+	}
 
 	const welcomeToAppleBody = () => (
 		<div className="welcome_body">
@@ -129,8 +132,8 @@ export default function WelcomeApple(props) {
 				})}
 			/>
 			<AnimatedRoute
-				path="/welcome/iphone2"
-				component={renderHeader(<Iphone/>)}
+				path="/welcome/watch"
+				component={renderHeader(<IWatch/>)}
 				atEnter={{ opacity: 0 }}
 				// atLeave={{ opacity: 0 }}
 				atActive={{ opacity: 1 }}

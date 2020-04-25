@@ -10,8 +10,8 @@ export default class App extends Component {
   // I am making this my global state just because redux is to
   // much bolierplate to implemnet in such a small app
   state = {
-    // i save the session in cookies and in redux to keep track
-    userLoggedIn: localStorage.getItem('userLoggedIn'),
+    // I save the session in cookies and in redux to keep track
+    userLoggedIn: false,
   };
 
   //  this mehtod i always put them as action and form there update my store
@@ -20,7 +20,6 @@ export default class App extends Component {
   }
 
   setUserLoggedOut = () => {
-    localStorage.setItem('userLoggedIn', false)
     this.setState({ userLoggedIn: false });
   }
 
@@ -33,7 +32,6 @@ export default class App extends Component {
 
     return (
       <Router>
-        {/* <NavHeader animate={this.state.userLoggedIn} location={this.props.location}/> */}
         <div className='app_container'>
           <HomeRoutes session={session} />
         </div>

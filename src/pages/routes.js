@@ -9,7 +9,6 @@ import AuthPage from './AuthPage';
 import WelcomeApple from './WelcomeApple';
 
 export const ROUTES = {
-	// HOME: '/',
 	WELCOME: '/welcome',
 	AUTH: '/auth',
 };

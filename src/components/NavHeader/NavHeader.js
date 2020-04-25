@@ -25,6 +25,6 @@ NavHeader.propTypes = {
 	location: PropTypes.object.isRequired,
 	history: PropTypes.object.isRequired,
 	animate: PropTypes.bool,
-}
+};
 
-export default withRouter(NavHeader)
+export default withRouter(NavHeader);

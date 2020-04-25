@@ -8,18 +8,18 @@ import './NavHeaderLinks.css';
 
 function NavHeader(props) {
 	const links = () => props.links.map(({ title, id, onClick, style }, index) => (
-			<Link
-				key={`${title}_${index}`}
-				title={title}
-				style={{
-					color: props.selectedTab === id ? '#000' : '#707070',
-					fontWeight: props.selectedTab === id ? 'bold' : 'normal',
-					...style,
-				}}
-				onClick={() => onClick(id)}
-				{...props}
-			/>
-		));
+		<Link
+			key={`${title}_${index}`}
+			title={title}
+			style={{
+				color: props.selectedTab === id ? '#000' : '#707070',
+				fontWeight: props.selectedTab === id ? 'bold' : 'normal',
+				...style,
+			}}
+			onClick={() => onClick(id)}
+			{...props}
+		/>
+	));
 
 	const goToWelcomePage = () => props.history.push(ROUTES.WELCOME)
 
