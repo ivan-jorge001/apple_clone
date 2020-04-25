@@ -1,3 +1,6 @@
+// This is a wrapper for all my serivces it helps with error
+// logging and saving and appending session without doing it
+// in every single service
 export default class BaseService {
 	async request(url, options) {
 		if (options.mocked) {

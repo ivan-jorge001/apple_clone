@@ -35,8 +35,11 @@ class AuthPage extends Component {
 
     AuthService.login(username, password)
     .then(() => {
+      // usually all this is done in the action so the
+      // react component are clean from any logic
       this.props.session.setUserLoggedIn();
       console.log(this.props);
+      localStorage.setItem('userLoggedIn', true);
     }).catch((err) => {
       // I hate using conosle logs in production apps
       // i like more using custom loggers to be able to track errors

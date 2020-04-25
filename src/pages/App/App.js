@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import { HomeRoutes } from '../routes';
-import NavHeader from '../../components/NavHeader';
 import '../../assets/fonts';
 import './App.css';
 
@@ -12,7 +11,7 @@ export default class App extends Component {
   // much bolierplate to implemnet in such a small app
   state = {
     // i save the session in cookies and in redux to keep track
-    userLoggedIn: false,
+    userLoggedIn: localStorage.getItem('userLoggedIn'),
   };
 
   //  this mehtod i always put them as action and form there update my store
@@ -21,6 +20,7 @@ export default class App extends Component {
   }
 
   setUserLoggedOut = () => {
+    localStorage.setItem('userLoggedIn', false)
     this.setState({ userLoggedIn: false });
   }
 
