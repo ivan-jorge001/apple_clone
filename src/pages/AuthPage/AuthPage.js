@@ -4,6 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { ROUTES } from '../routes';
 import AuthService from '../../services/AuthService';
+import NavHeader from '../../components/NavHeader';
+import NewProducts from '../NewProducts';
 import logoBlack from '../../assets/images/apple_black.svg';
 import './AuthPage.css';
 
@@ -34,7 +36,6 @@ class AuthPage extends Component {
     AuthService.login(username, password)
     .then(() => {
       this.props.session.setUserLoggedIn();
-      this.props.history.push(ROUTES.HOME);
       console.log(this.props);
     }).catch((err) => {
       // I hate using conosle logs in production apps
@@ -62,7 +63,6 @@ class AuthPage extends Component {
     AuthService.signup(this.state.fields)
     .then(() => {
       this.props.session.setUserLoggedIn();
-      this.props.history.push(ROUTES.HOME);
       console.log(this.props);
     }).catch((err) => {
       // I hate using conosle logs in production apps
@@ -156,8 +156,16 @@ class AuthPage extends Component {
 
   render() {
     return (
-      <div className="authpage_background">
-        {this.renderLogInForm()}
+      <div>
+        <NavHeader animate={this.props.session.userLoggedIn}/>
+        {this.props.session.userLoggedIn
+          ? <NewProducts onClick={() => this.props.history.push(ROUTES.WELCOME)}/>
+          : (
+              <div className="authpage_background">
+                {this.renderLogInForm()}
+              </div>
+            )
+        }
       </div>
     );
   }
