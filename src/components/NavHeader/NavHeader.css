@@ -9,6 +9,12 @@
 	align-items: center;
 }
 
+.navheader_link_container {
+	height: 10vh;
+	width: 95vw;
+	background-color: white;
+}
+
 .navheader_container.slide_down {
 	margin-top: 0;
 	transition: all 2s;

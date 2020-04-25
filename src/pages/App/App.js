@@ -33,7 +33,7 @@ export default class App extends Component {
 
     return (
       <Router>
-        <NavHeader animate={this.state.userLoggedIn} location={this.props.location}/>
+        {/* <NavHeader animate={this.state.userLoggedIn} location={this.props.location}/> */}
         <div className='app_container'>
           <HomeRoutes session={session} />
         </div>

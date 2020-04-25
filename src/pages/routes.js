@@ -4,12 +4,13 @@ import {
   Route,
 	Redirect,
 } from 'react-router-dom';
+import { AnimatedSwitch, AnimatedRoute } from 'react-router-transition';
+
 import AuthPage from './AuthPage';
-import NewProducts from './NewProducts';
 import WelcomeApple from './WelcomeApple';
 
 export const ROUTES = {
-	HOME: '/',
+	// HOME: '/',
 	WELCOME: '/welcome',
 	AUTH: '/auth',
 };
@@ -29,15 +30,25 @@ const ProtectedRoute = ({ component: Component, session, ...rest }) => (
 export function HomeRoutes(props) {
 // change back to use protected routes
 	return (
-		<Switch>
-			<Route path={ROUTES.WELCOME} component={WelcomeApple} {...props}/>
-			<Route exact path={ROUTES.HOME} component={NewProducts} {...props}/>
+		<AnimatedSwitch
+			atEnter={{ opacity: 0 }}
+			atLeave={{ opacity: 0 }}
+			atActive={{ opacity: 1 }}
+		>
+			<Route
+				path={ROUTES.WELCOME}
+				component={WelcomeApple}
+				{...props}
+			/>
+
 			<Route
 				path={ROUTES.AUTH}
 				render={(locationProps) => {
 					return <AuthPage {...props} {...locationProps}/>
 				}}
 			/>
-		</Switch>
+			<Route path="*" render={() => <Redirect to={ROUTES.AUTH}/>}/>
+		</AnimatedSwitch>
 	);
 }
+

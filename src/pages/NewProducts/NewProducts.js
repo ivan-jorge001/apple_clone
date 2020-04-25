@@ -3,9 +3,8 @@ import classnames from 'classnames';
 import { useCountUp } from 'react-countup';
 import whiteAppleLogo from '../../assets/images/apple_white.svg'
 import './NewProducts.css';
-import { ROUTES } from '../routes';
 
-export default function NewProducts(props) {
+export default function NewProducts({ onClick }) {
 	const [show, setShow] = useState(0);
 	const { countUp } = useCountUp({ end: 2019, start: 900, delay: 0.2, duration: 1 });
 
@@ -13,12 +12,8 @@ export default function NewProducts(props) {
 		setShow(true);
 	}, 50);
 
-	const goToWelcomeScreen = () => {
-		props.history.push(ROUTES.WELCOME)
-	}
-
 	return (
-		<div className="newProducts_container" onClick={goToWelcomeScreen}>
+		<div className="newProducts_container" onClick={onClick}>
 			<div className={classnames('newProducts_background', { animate: show })}>
 				<span className={classnames('newProducts_text', { animate: show })}>
 					New Products Coming this Summer
@@ -28,7 +23,7 @@ export default function NewProducts(props) {
 					src={whiteAppleLogo}
 					alt="apple logo"
 				/>
-				<div className="newProducts_counter">
+				<div className={classnames('newProducts_counter', { animate: show })}>
 					{countUp}
 				</div>
 			</div>

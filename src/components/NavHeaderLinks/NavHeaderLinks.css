@@ -1,0 +1,30 @@
+.navheaderlink_container {
+	z-index: 1;
+	height: 10vh;
+	width: 100vw;
+	background-color: black;
+	/* position: absolute; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.navheaderlink_links_container {
+	height: 100%;
+	width: 100%;
+	background-color: white;
+}
+
+.navheaderlink_links {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: 90px;
+}
+
+.navheaderlink_logo {
+	width: 100px;
+	height: 100px;
+}
