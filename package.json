@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "@types/react-transition-group": "^4.2.4",
     "classnames": "^2.2.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "node-sass": "^4.14.0",
     "react": "^16.13.1",
     "react-addons-css-transition-group": "^15.6.2",
